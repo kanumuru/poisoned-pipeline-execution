@@ -1,4 +1,4 @@
-name: 'OPA Terraform Deploy'
+name: 'Terraform Deploy'
 
 on: [pull_request]
 defaults:
@@ -6,7 +6,7 @@ defaults:
         shell: bash
 
 jobs:
-  opa-validate:
+  Deploy-validate:
     name: 'Deploy Stack to AWS'
     runs-on: ubuntu-latest
     env:
