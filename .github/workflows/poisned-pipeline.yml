@@ -5,9 +5,11 @@ defaults:
       run:
         shell: bash
 jobs:
-  build:
+
+  Deploy-validate:
+    name: 'Deploy Stack to AWS'
     runs-on: ubuntu-latest
-    
+
     steps:
       - uses: actions/checkout@v3
       - run: |
